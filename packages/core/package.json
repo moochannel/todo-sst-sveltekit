@@ -1,0 +1,15 @@
+{
+  "name": "@todo-sstv2-sveltekit/core",
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "test": "sst bind vitest",
+    "typecheck": "tsc -noEmit"
+  },
+  "devDependencies": {
+    "vitest": "^2.1.8"
+  },
+  "dependencies": {
+    "zod": "^3.23.8"
+  }
+}
