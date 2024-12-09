@@ -9,14 +9,24 @@
     "deploy": "sst deploy",
     "remove": "sst remove",
     "console": "sst console",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit -p ./tsconfig.json",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "codereg": "pnpm run typecheck && pnpm run format && pnpm run lint"
   },
   "devDependencies": {
-    "sst": "^2",
+    "@eslint/js": "^9.16.0",
+    "@ianvs/prettier-plugin-sort-imports": "^4.4.0",
+    "@tsconfig/node18": "^18.2.4",
     "aws-cdk-lib": "2.171.1",
     "constructs": "10.3.0",
+    "eslint": "^9.16.0",
+    "eslint-config-prettier": "^9.1.0",
+    "prettier": "^3.4.2",
+    "sst": "^2",
     "typescript": "^5.7.2",
-    "@tsconfig/node18": "^18.2.4"
+    "typescript-eslint": "^8.17.0"
   },
   "workspaces": [
     "packages/*"
