@@ -48,16 +48,6 @@ importers:
         specifier: ^8.17.0
         version: 8.17.0(eslint@9.16.0)(typescript@5.7.2)
 
-  packages/core:
-    dependencies:
-      zod:
-        specifier: ^3.23.8
-        version: 3.23.8
-    devDependencies:
-      vitest:
-        specifier: ^2.1.8
-        version: 2.1.8(@types/node@22.10.1)
-
   packages/functions:
     devDependencies:
       '@types/aws-lambda':
@@ -7772,7 +7762,7 @@ snapshots:
     dependencies:
       '@smithy/protocol-http': 4.1.7
       '@smithy/querystring-builder': 3.0.10
-      '@smithy/types': 3.5.0
+      '@smithy/types': 3.7.1
       '@smithy/util-base64': 3.0.0
       tslib: 2.8.1
 
@@ -7837,8 +7827,8 @@ snapshots:
     dependencies:
       '@smithy/middleware-serde': 3.0.10
       '@smithy/node-config-provider': 3.1.11
-      '@smithy/shared-ini-file-loader': 3.1.8
-      '@smithy/types': 3.5.0
+      '@smithy/shared-ini-file-loader': 3.1.11
+      '@smithy/types': 3.7.1
       '@smithy/url-parser': 3.0.10
       '@smithy/util-middleware': 3.0.10
       tslib: 2.8.1
@@ -7910,7 +7900,7 @@ snapshots:
       '@smithy/abort-controller': 3.1.8
       '@smithy/protocol-http': 4.1.7
       '@smithy/querystring-builder': 3.0.10
-      '@smithy/types': 3.5.0
+      '@smithy/types': 3.7.1
       tslib: 2.8.1
 
   '@smithy/node-http-handler@3.3.1':
@@ -7966,7 +7956,7 @@ snapshots:
 
   '@smithy/shared-ini-file-loader@3.1.8':
     dependencies:
-      '@smithy/types': 3.5.0
+      '@smithy/types': 3.7.1
       tslib: 2.8.1
 
   '@smithy/signature-v4@2.3.0':
@@ -8135,7 +8125,7 @@ snapshots:
   '@smithy/util-retry@3.0.7':
     dependencies:
       '@smithy/service-error-classification': 3.0.10
-      '@smithy/types': 3.5.0
+      '@smithy/types': 3.7.1
       tslib: 2.8.1
 
   '@smithy/util-stream@1.1.0':
@@ -8152,8 +8142,8 @@ snapshots:
   '@smithy/util-stream@3.1.9':
     dependencies:
       '@smithy/fetch-http-handler': 3.2.9
-      '@smithy/node-http-handler': 3.2.4
-      '@smithy/types': 3.5.0
+      '@smithy/node-http-handler': 3.3.1
+      '@smithy/types': 3.7.1
       '@smithy/util-base64': 3.0.0
       '@smithy/util-buffer-from': 3.0.0
       '@smithy/util-hex-encoding': 3.0.0
@@ -8201,7 +8191,7 @@ snapshots:
   '@smithy/util-waiter@3.1.6':
     dependencies:
       '@smithy/abort-controller': 3.1.8
-      '@smithy/types': 3.5.0
+      '@smithy/types': 3.7.1
       tslib: 2.8.1
 
   '@smithy/util-waiter@3.1.9':
@@ -8866,7 +8856,7 @@ snapshots:
   buffer@4.9.2:
     dependencies:
       base64-js: 1.5.1
-      ieee754: 1.1.13
+      ieee754: 1.2.1
       isarray: 1.0.0
 
   buffer@5.6.0:
@@ -9048,7 +9038,7 @@ snapshots:
   commist@1.1.0:
     dependencies:
       leven: 2.1.0
-      minimist: 1.2.6
+      minimist: 1.2.8
 
   commondir@1.0.1: {}
 
@@ -10329,7 +10319,7 @@ snapshots:
       micromatch: 4.0.8
       walker: 1.0.8
     optionalDependencies:
-      fsevents: 2.3.2
+      fsevents: 2.3.3
 
   jest-leak-detector@29.7.0:
     dependencies:
@@ -10853,7 +10843,7 @@ snapshots:
       duplexify: 4.1.3
       help-me: 3.0.0
       inherits: 2.0.4
-      minimist: 1.2.6
+      minimist: 1.2.8
       mqtt-packet: 6.10.0
       pump: 3.0.2
       readable-stream: 3.6.2
@@ -12246,7 +12236,7 @@ snapshots:
 
   xml2js@0.6.2:
     dependencies:
-      sax: 1.2.1
+      sax: 1.4.1
       xmlbuilder: 11.0.1
 
   xmlbuilder@11.0.1: {}
