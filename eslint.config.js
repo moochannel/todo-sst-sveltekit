@@ -4,10 +4,7 @@ import ts from 'typescript-eslint'
 
 export default ts.config(
   {
-    ignores: [
-      './**/node_modules/',
-      '.sst/',
-    ],
+    ignores: ['./**/node_modules/', '.sst/'],
   },
   // JavaScript
   js.configs.recommended,
@@ -24,8 +21,8 @@ export default ts.config(
     },
   },
   {
-    files: ["eslint.config.js"],
-    ...ts.configs.disableTypeChecked
+    files: ['eslint.config.js'],
+    ...ts.configs.disableTypeChecked,
   },
   // Prettier
   eslintConfigPrettier,
