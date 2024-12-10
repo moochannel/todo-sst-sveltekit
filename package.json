@@ -4,12 +4,14 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "be": "pnpm -F \"functions\"",
+    "fe": "pnpm -F \"frontend\"",
     "dev": "sst dev",
     "build": "sst build",
     "deploy": "sst deploy",
     "remove": "sst remove",
     "console": "sst console",
-    "typecheck": "tsc --noEmit -p ./tsconfig.json",
+    "typecheck": "tsc --noEmit -p ./tsconfig.json -p packages/functions/tsconfig.json && pnpm fe run check",
     "lint": "eslint .",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
@@ -20,18 +22,20 @@
     "@eslint/js": "^9.16.0",
     "@ianvs/prettier-plugin-sort-imports": "^4.4.0",
     "@tsconfig/node18": "^18.2.4",
-    "aws-cdk-lib": "2.171.1",
+    "@types/node": "18",
+    "aws-cdk-lib": "2.142.1",
     "constructs": "10.3.0",
     "eslint": "^9.16.0",
     "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-svelte": "^2.36.0",
+    "globals": "^15.0.0",
     "husky": "^9.1.7",
     "lint-staged": "^15.2.10",
     "prettier": "^3.4.2",
-    "sst": "^2",
+    "prettier-plugin-svelte": "^3.2.6",
+    "prettier-plugin-tailwindcss": "^0.6.5",
+    "sst": "2.43.5",
     "typescript": "^5.7.2",
-    "typescript-eslint": "^8.17.0"
-  },
-  "workspaces": [
-    "packages/*"
-  ]
+    "typescript-eslint": "^8.18.0"
+  }
 }
