@@ -1,8 +1,28 @@
+import { ulid } from 'ulid'
+
 type TodoBase = {
   id: string // ULID
   description: string
   readonly createdAt: Date
   readonly updatedAt: Date
+}
+
+export type CreatingTodo = {
+  _kind: 'creating'
+  description: string
+}
+
+export const CreatingTodo = {
+  persist(params: CreatingTodo): ActiveTodo {
+    console.log('save as active todo', this)
+    return {
+      ...params,
+      _kind: 'active',
+      id: ulid(),
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    }
+  },
 }
 
 export type ActiveTodo = TodoBase & {

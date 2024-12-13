@@ -1,4 +1,5 @@
 import { DynamoDBClient, GetItemCommand, ScanCommand } from '@aws-sdk/client-dynamodb'
+import { DynamoDBDocumentClient, PutCommand } from '@aws-sdk/lib-dynamodb'
 import { errAsync, fromPromise, okAsync, type ResultAsync } from 'neverthrow'
 import { Table } from 'sst/node/table'
 
@@ -45,7 +46,7 @@ export class DynamoDbTodoRepository implements ITodoRepository {
     const dbClient = new DynamoDBClient({ region: 'ap-northeast-1' })
     const result = fromPromise(
       dbClient.send(
-        new GetItemCommand({ TableName: Table.todo.tableName, Key: { id: { N: `${todoId}` } } }),
+        new GetItemCommand({ TableName: Table.todo.tableName, Key: { id: { S: todoId } } }),
       ),
       (error) => new Error('Failed to fetch from DynamoDB', { cause: error }),
     ).andThen((command) => {
@@ -71,6 +72,31 @@ export class DynamoDbTodoRepository implements ITodoRepository {
         } satisfies CompletedTodo)
       }
     })
+    return result
+  }
+
+  public save(todo: Todo): ResultAsync<Todo, Error> {
+    const dbClient = new DynamoDBClient({ region: 'ap-northeast-1' })
+    const docClient = DynamoDBDocumentClient.from(dbClient)
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { _kind, ...rest } = todo
+    const result = fromPromise(
+      docClient.send(
+        new PutCommand({
+          TableName: Table.todo.tableName,
+          Item: {
+            ...rest,
+            doneAt: todo._kind === 'active' ? '' : todo.doneAt.toISOString(),
+            createdAt: todo.createdAt.toISOString(),
+            updatedAt: todo.updatedAt.toISOString(),
+          },
+        }),
+      ),
+      (error) => new Error('Failed to putting to DynamoDB', { cause: error }),
+    ).andThen(() => {
+      return this.one(todo.id)
+    })
+
     return result
   }
 }

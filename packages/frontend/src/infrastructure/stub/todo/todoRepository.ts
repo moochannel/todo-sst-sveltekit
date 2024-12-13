@@ -39,4 +39,8 @@ export class StubTodoRepository implements ITodoRepository {
     const todo = sampleTodos.find((_todo) => _todo.id === id)
     return todo == null ? errAsync(new Error('id not found')) : okAsync(todo)
   }
+
+  public save(todo: Todo): ResultAsync<Todo, Error> {
+    return okAsync(todo)
+  }
 }
