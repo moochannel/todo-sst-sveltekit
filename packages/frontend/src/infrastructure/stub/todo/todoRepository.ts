@@ -6,14 +6,14 @@ import type { Todo } from '../../../domain/todo/models/todo'
 const sampleTodos = [
   {
     _kind: 'active',
-    id: 1,
+    id: '01JEZCXP2YRMEHEX32MKGATHJZ',
     description: 'test1',
     createdAt: new Date(),
     updatedAt: new Date(),
   },
   {
     _kind: 'completed',
-    id: 2,
+    id: '01JEZCXPVGBA84JRSGVW0TWY0D',
     description: 'test2',
     doneAt: new Date(),
     createdAt: new Date(),
@@ -21,7 +21,7 @@ const sampleTodos = [
   },
   {
     _kind: 'active',
-    id: 3,
+    id: '01JEZCXRH4GCRG7PWYA7M10NYA',
     description: `\
 test3-1
 test3-2`,

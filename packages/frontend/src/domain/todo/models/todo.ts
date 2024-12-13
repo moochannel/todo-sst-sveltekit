@@ -1,5 +1,5 @@
 type TodoBase = {
-  id: number
+  id: string // ULID
   description: string
   readonly createdAt: Date
   readonly updatedAt: Date
