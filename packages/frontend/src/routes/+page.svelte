@@ -1,18 +1,28 @@
 <script lang="ts">
   import { superForm } from 'sveltekit-superforms'
 
+  import type { Todo } from '../domain/todo/models/todo'
   import type { PageData } from './$types'
 
   let { data }: { data: PageData } = $props()
 
   const { form, errors, enhance, constraints, message } = superForm(data.form)
+
+  const toggleDone = async (todo: Todo) => {
+    await fetch(`/api/todo/${todo.id}/toggleDone`, { method: 'POST' })
+  }
 </script>
 
 <h1>Todo</h1>
 <ul>
   {#each data.todos as todo}
     <li class="grid grid-cols-[auto_1fr_auto] place-content-center gap-1">
-      <input type="checkbox" checked={todo._kind === 'completed'} class="col-span-1" />
+      <input
+        type="checkbox"
+        checked={todo._kind === 'completed'}
+        class="col-span-1"
+        onchange={() => toggleDone(todo)}
+      />
       <div class="col-span-1 whitespace-pre-wrap break-words">{todo.description}</div>
       <div class="col-span-1">✕</div>
     </li>
