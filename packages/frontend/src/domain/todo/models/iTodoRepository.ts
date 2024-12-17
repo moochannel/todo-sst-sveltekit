@@ -8,4 +8,6 @@ export interface ITodoRepository {
   one(id: Todo['id']): ResultAsync<Todo, Error>
 
   save(todo: Todo): ResultAsync<Todo, Error>
+
+  delete(todo: Todo): ResultAsync<null, Error>
 }

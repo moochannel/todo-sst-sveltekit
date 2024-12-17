@@ -1,4 +1,9 @@
-import { DynamoDBClient, GetItemCommand, ScanCommand } from '@aws-sdk/client-dynamodb'
+import {
+  DeleteItemCommand,
+  DynamoDBClient,
+  GetItemCommand,
+  ScanCommand,
+} from '@aws-sdk/client-dynamodb'
 import { DynamoDBDocumentClient, PutCommand } from '@aws-sdk/lib-dynamodb'
 import { errAsync, fromPromise, okAsync, type ResultAsync } from 'neverthrow'
 import { Table } from 'sst/node/table'
@@ -97,6 +102,17 @@ export class DynamoDbTodoRepository implements ITodoRepository {
       return this.one(todo.id)
     })
 
+    return result
+  }
+
+  public delete(todo: Todo): ResultAsync<null, Error> {
+    const dbClient = new DynamoDBClient({ region: 'ap-northeast-1' })
+    const result = fromPromise(
+      dbClient.send(
+        new DeleteItemCommand({ TableName: Table.todo.tableName, Key: { id: { S: todo.id } } }),
+      ),
+      (error) => new Error('Failed to fetch from DynamoDB', { cause: error }),
+    ).map(() => null)
     return result
   }
 }

@@ -1,6 +1,8 @@
 <script lang="ts">
   import { superForm } from 'sveltekit-superforms'
 
+  import { invalidateAll } from '$app/navigation'
+
   import type { Todo } from '../domain/todo/models/todo'
   import type { PageData } from './$types'
 
@@ -10,6 +12,11 @@
 
   const toggleDone = async (todo: Todo) => {
     await fetch(`/api/todo/${todo.id}/toggleDone`, { method: 'POST' })
+  }
+
+  const deleteTodo = async (todo: Todo) => {
+    await fetch(`/api/todo/${todo.id}`, { method: 'DELETE' })
+    await invalidateAll()
   }
 </script>
 
@@ -24,7 +31,7 @@
         onchange={() => toggleDone(todo)}
       />
       <div class="col-span-1 whitespace-pre-wrap break-words">{todo.description}</div>
-      <div class="col-span-1">✕</div>
+      <div class="col-span-1"><button onclick={() => deleteTodo(todo)}>x</button></div>
     </li>
   {/each}
 </ul>
