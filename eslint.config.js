@@ -46,7 +46,6 @@ export default ts.config(
       'packages/frontend/svelte.config.js',
       'packages/frontend/tailwind.config.ts',
       'packages/frontend/postcss.config.js',
-      'packages/frontend/drizzle.config.ts',
     ],
     ...ts.configs.disableTypeChecked,
   },
