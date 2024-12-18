@@ -51,6 +51,6 @@ export const actions = {
         },
       )
 
-    return message(form, 'Form posted successfully.')
+    return message(form, 'Added a task successfully.')
   },
 } satisfies Actions
