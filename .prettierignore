@@ -12,3 +12,4 @@ package-lock.json
 yarn.lock
 
 packages/frontend/.svelte-kit/
+packages/frontend/src/lib/components/ui/
