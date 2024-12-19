@@ -1,6 +1,6 @@
 # todo-sst-sveltekit
 
-SSTとSvelteKit(Svelte5)をベースにしたtodoアプリ作例です。
+SSTとSvelteKit(Svelte 5)をベースにしたtodoアプリ作例です。
 
 ## 実行方法
 
@@ -51,9 +51,21 @@ pnpm sst remove
 - root: SSTでのデプロイ構成管理、Linter/Formatter/GitHub Actionsなど開発環境管理
   - packages/frontend: SvelteKitのフロントエンド
 
-SSTを実行(デバッグ/デプロイ共)すると、AWSアカウントにDynamoDBを配置します。
+### root
 
-SvelteKitはSSRで実行し、サーバ実行部分はLambdaで動作しているのでそこからDynamoDBを利用しています。ブラウザからDynamoDBへは直接通信しません。
+- SSTを実行(デバッグ/デプロイ共)すると、AWSアカウントにDynamoDBを配置します。
+- SvelteKitはCloudfront(と一部はLambdaに)デプロイします。サーバ実行部分はLambdaで動作するのでそこからDynamoDBを利用しています。ブラウザからDynamoDBへは直接通信しません。
+
+### packages/frontend
+
+SvelteKit(Svelte 5)をベースに描きの要素を取り入れてtodoアプリを書いています。
+
+- ADT(代数的データ型)でのドメインモデル
+- neverthowを使用した関数型プログラミング風
+- inversifyを使用したDI(依存性注入)
+- shadcn-svelteを使用したUIデザイン
+- superforms(+zod)を使用したフォーム定義
+- @aws-sdk/client-dynamodb、@aws-sdk/lib-dynamodbを使用したDynamoDBへの永続化
 
 ## 作者
 
