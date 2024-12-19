@@ -22,7 +22,6 @@ export function API({ stack }: StackContext) {
     path: 'packages/frontend',
     bind: [dynamoDb],
     environment: {
-      DATABASE_URL: process.env.DATABASE_URL || '',
       BACKEND_BASE_URL: api.url,
     },
   })
